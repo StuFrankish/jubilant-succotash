@@ -192,7 +192,7 @@ I will use this repo as the basis for creating a new vue component that can be d
                 } else if (command === 'italic') {
                     replacement = `*${selectedText}*`;
                 } else if (command === 'heading') {
-                    replacement = `### ${selectedText}*`;
+                    replacement = `### ${selectedText}`;
                 }
 
                 textarea.setRangeText(replacement, start, end, 'end');
