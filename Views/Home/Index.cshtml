@@ -28,16 +28,28 @@ I will use this repo as the basis for creating a new vue component that can be d
         font-size: 0.8rem;
     }
 
-    a.nav-link:not(.active) {
-        color: #9e9e9e;
-    }
+        a.nav-link:not(.active) {
+            color: #9e9e9e;
+        }
 
-    a.nav-link:not(.active):hover {
-        border-color: transparent !important;
-    }
+            a.nav-link:not(.active):hover {
+                border-color: transparent !important;
+            }
 
     li.nav-item.ml-auto {
         padding: 2px;
+    }
+
+    .icon-buttons button {
+        color: #757575;
+    }
+    .icon-buttons .separator {
+        display: inline-block;
+        width: 1px;
+        background-color: #ced4da;
+        height: 1rem;
+        position: relative;
+        top: 4px;
     }
 
     .markdown-editor {
@@ -110,17 +122,25 @@ I will use this repo as the basis for creating a new vue component that can be d
                aria-selected="false">Preview</a>
         </li>
         <li class="nav-item ml-auto">
-            <!-- Icon-only buttons -->
-            <button class="btn btn-light btn-sm" data-command="bold">
-                <i class="fa-solid fa-bold"></i>
-            </button>
-            <button class="btn btn-light btn-sm" data-command="italic">
-                <i class="fa-solid fa-italic"></i>
-            </button>
-            <button class="btn btn-light btn-sm" data-command="heading">
-                <i class="fa-solid fa-heading"></i>
-            </button>
-            <!-- Add more buttons as needed -->
+            
+            <div class="icon-buttons">
+                <!-- Icon-only buttons -->
+                <button class="btn btn-light btn-sm" data-command="bold">
+                    <i class="fa-solid fa-bold"></i>
+                </button>
+                <button class="btn btn-light btn-sm" data-command="italic">
+                    <i class="fa-solid fa-italic"></i>
+                </button>
+                <button class="btn btn-light btn-sm" data-command="heading">
+                    <i class="fa-solid fa-heading"></i>
+                </button>
+                <div class="separator"></div>
+                <button class="btn btn-light btn-sm" data-command="link">
+                    <i class="fa-solid fa-link"></i>
+                </button>
+                <!-- Add more buttons as needed -->
+            </div>
+
         </li>
     </ul>
 
@@ -154,6 +174,10 @@ I will use this repo as the basis for creating a new vue component that can be d
         // Handle tab change event
         $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
             if (e.target.id === 'preview-tab') {
+
+                // Hide the icon buttons when using preview mode
+                $(editorButtons).parent().hide();
+
                 // Simple markdown to HTML conversion
                 let markdownText = textarea.value;
                 // Replace **text** with bold
@@ -173,9 +197,13 @@ I will use this repo as the basis for creating a new vue component that can be d
                 preview.innerHTML = markdownText;
 
                 // If the markdown text is empty, replace the contents with a placeholder "nothing to preview"
-                if (markdownText === '') { 
+                if (markdownText === '') {
                     preview.innerHTML = 'Nothing to preview';
                 }
+            }
+            else {
+                // Show the icon buttons when using edit mode
+                $(editorButtons).parent().show();
             }
         });
 
@@ -185,7 +213,7 @@ I will use this repo as the basis for creating a new vue component that can be d
                 const start = textarea.selectionStart;
                 const end = textarea.selectionEnd;
                 const selectedText = textarea.value.substring(start, end);
-                let replacement;
+                let replacement = selectedText;
 
                 if (command === 'bold') {
                     replacement = `**${selectedText}**`;
