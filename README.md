@@ -1,6 +1,13 @@
 # jubilant-succotash
-Random exercise to duplicate the look and feel of the GitHub markdown editor.
+Exercise to duplicate the look and feel of the GitHub markdown editor.
 The editor has the basic look and feel of the Github component with some of the basic features.
+
+### Why?
+I've seen multiple projects that use 3 or 4 WYSIWYG editors embedded on the same page to provide (technical) users with the ability add notes, comments and other such like. The performance impact of having multiple instances of these freely available editors however was dragging page performance through the mud and driving user friction through the roof. Given the sum total usage of the editors was very basic text formatting, why not use markdown?
+
+So here I am, "up late, again" as is the norm, writing one from scratch that looks and feels like one most technical folks are familiar with, something that could hopefully be embedded in a form as a drop in replacement for a textarea control and behave all the same.
+
+Don't mind the repo name... "jubilant-succotash" was Githubs idea and I don't have any better ones!
 
 ### Technical Bits
 - Built on a dotnet8 backend with MVC (quick and dirty project setup).
@@ -24,7 +31,7 @@ dotnet run
 ### To-Do
 - Clean up the CSS and Javascript.
 - Hide the tool buttons when ini "preview" mode.
-- Swap out the javascript "markdown engine" for something that will actually do it.
+- Swap out the javascript "markdown engine" for something that will actually do some complex rendering.
 
 ### The Basic Editor
 ![image](https://github.com/user-attachments/assets/7248f050-affc-4b17-bb03-1ffb80204fbd)
