@@ -30,7 +30,6 @@ dotnet run
 
 ### To-Do
 - Clean up the CSS and Javascript.
-- Hide the tool buttons when ini "preview" mode.
 - Swap out the javascript "markdown engine" for something that will actually do some complex rendering.
 
 ### The Basic Editor
