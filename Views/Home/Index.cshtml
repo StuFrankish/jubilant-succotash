@@ -9,6 +9,8 @@
         position: relative;
         left: -1px;
         top: -1px;
+        width: calc(100% + 1px);
+        padding-right: 2px;
         background-color: #f6f8fa;
     }
 
@@ -34,17 +36,25 @@
         top: 3px;
     }
 
-    .icon-buttons button {
-        color: #757575;
-    }
-    .icon-buttons .separator {
-        display: inline-block;
-        width: 1px;
-        background-color: #ced4da;
-        height: 1rem;
-        position: relative;
-        top: 4px;
-    }
+        .icon-buttons button {
+            color: #757575;
+        }
+
+            .icon-buttons button,
+            .icon-buttons button:focus
+            {
+                outline: none;
+                box-shadow: none;
+            }
+
+        .icon-buttons .separator {
+            display: inline-block;
+            width: 1px;
+            background-color: #ced4da;
+            height: 1rem;
+            position: relative;
+            top: 4px;
+        }
 
     .markdown-editor {
         border-radius: 5px;
@@ -90,10 +100,40 @@
     }
 
     .editor-preview {
-        background-color: #ffffff;
+        background-color: #FFF;
+    }
+
+    /* Custom Modal As Menu */
+    .custom-modal-menu {
+        position: absolute;
+        display: none;
+        z-index: 1050;
+        min-width: 200px;
+        width: unset;
+        height: unset;
+        font-size: 0.8rem;
+    }
+
+    .custom-modal-menu .fa-fw {
+        position: relative;
+        left: -5px;
+    }
+
+    .custom-modal-menu > div.list-group {
+        box-shadow: 0 0 3px grey;
     }
 
 </style>
+
+<div id="menuModal" class="modal custom-modal-menu">
+    <div class="list-group">
+        <a class="list-group-item list-group-item-action text-muted" href="#"><i class="fa-solid fa-hammer fa-fw"></i>Tool</a>
+        <a class="list-group-item list-group-item-action text-muted" href="#"><i class="fa-solid fa-hammer fa-fw"></i>Another Tool</a>
+        <a class="list-group-item list-group-item-action text-muted" href="#"><i class="fa-solid fa-hammer fa-fw"></i>Some Other Tool</a>
+        <a class="list-group-item list-group-item-action text-muted" href="#"><i class="fa-solid fa-hammer fa-fw"></i>That Tool</a>
+        <a class="list-group-item list-group-item-action text-muted" href="#"><i class="fa-solid fa-hammer fa-fw"></i>This Tool</a>
+    </div>
+</div>
 
 <div class="markdown-editor">
     <!-- Nav tabs -->
@@ -117,25 +157,29 @@
                aria-selected="false">Preview</a>
         </li>
         <li class="nav-item flex-grow-1">
-            
+
             <div class="icon-buttons float-end">
+
                 <!-- Icon-only buttons -->
-                <button class="btn btn-light btn-sm" data-command="bold">
-                    <i class="fa-solid fa-bold"></i>
-                </button>
-                <button class="btn btn-light btn-sm" data-command="italic">
-                    <i class="fa-solid fa-italic"></i>
-                </button>
-                <button class="btn btn-light btn-sm" data-command="heading">
+                <button class="btn btn-light btn-sm" data-command="heading" title="Heading">
                     <i class="fa-solid fa-heading"></i>
                 </button>
-                <div class="separator"></div>
-                <button class="btn btn-light btn-sm" data-command="link">
-                    <i class="fa-solid fa-link"></i>
+                <button class="btn btn-light btn-sm" data-command="bold" title="Bold">
+                    <i class="fa-solid fa-bold"></i>
+                </button>
+                <button class="btn btn-light btn-sm" data-command="italic" title="Italic">
+                    <i class="fa-solid fa-italic"></i>
                 </button>
                 <div class="separator"></div>
-                <button class="btn btn-light btn-sm" data-command="link">
+                <button class="btn btn-light btn-sm" data-command="link" title="Link">
+                    <i class="fa-solid fa-link"></i>
+                </button>
+                <button class="btn btn-light btn-sm" data-command="link" title="Mention">
                     <i class="fa-regular fa-circle-user"></i>
+                </button>
+                <div class="separator"></div>
+                <button class="btn btn-light btn-sm" id="modalButton" title="Tools">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
                 </button>
                 <!-- Add more buttons as needed -->
             </div>
@@ -161,13 +205,13 @@
 </div>
 
 <script type="text/javascript">
-    (function() {
+    $(function () {
         const textarea = document.querySelector('.editor-textarea');
         const preview = document.querySelector('.editor-preview');
         const editorButtons = document.querySelectorAll('[data-command]');
 
         // Handle tab change event
-        $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function(e) {
+        $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
             if (e.target.id === 'preview-tab') {
 
                 // Hide the icon buttons when using preview mode
@@ -222,6 +266,30 @@
                 textarea.focus();
             });
         });
-    })();
+    });
+
+    document.getElementById('modalButton').addEventListener('click', function (e) {
+        const modal = document.getElementById('menuModal');
+        const buttonRect = document.getElementById('modalButton').getBoundingClientRect();
+
+        // Toggle the display of the modal
+        modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+        const modalWidth = modal.getBoundingClientRect().width;
+
+        // Position the modal to the left of the button
+        modal.style.top = `${buttonRect.bottom}px`;
+        modal.style.left = `${buttonRect.right - modalWidth}px`;
+    });
+
+    // Close modal if user clicks outside of it
+    document.addEventListener('click', function (e) {
+        const modal = document.getElementById('menuModal');
+        const button = document.getElementById('modalButton');
+
+        // Hide the modal if click happens outside the modal or button
+        if (!button.contains(e.target) && !modal.contains(e.target)) {
+            modal.style.display = 'none';
+        }
+    });
 
 </script>
