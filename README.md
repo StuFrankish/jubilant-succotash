@@ -33,4 +33,5 @@ dotnet run
 - Swap out the javascript "markdown engine" for something that will actually do some complex rendering.
 
 ### The Basic Editor
-![image](https://github.com/user-attachments/assets/7248f050-affc-4b17-bb03-1ffb80204fbd)
+![image](https://github.com/user-attachments/assets/7f97a117-4ce8-47ef-abfa-af76dbc7a469)
+
