@@ -2,19 +2,7 @@
     ViewData["Title"] = "Home Page";
 }
 
-<pre style="background-color: #f8f8f8;padding: 10px;border-radius: 10px;box-shadow: 0 0 5px #9E9E9E; color: #3F51B5; margin-bottom: 50px;">
-<b>Pre-text:</b>
-This side-project is an exercise in creating a markdown editor that mimics the markdown editor used oh GitHub.
-I will use this repo as the basis for creating a new vue component that can be dropped in and pointed at some endpoint to render html from the written markdown.
-</pre>
-<!-- Include Bootstrap CSS -->
-<link rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-
-<link href="~/lib/font-awesome/css/fontawesome.min.css" rel="stylesheet" />
-<link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
-
-<style>
+<style type="text/css">
     /* Custom styles */
 
     .nav.nav-tabs {
@@ -38,6 +26,12 @@ I will use this repo as the basis for creating a new vue component that can be d
 
     li.nav-item.ml-auto {
         padding: 2px;
+    }
+
+    .icon-buttons {
+        float: right !important;
+        position: relative;
+        top: 3px;
     }
 
     .icon-buttons button {
@@ -98,15 +92,16 @@ I will use this repo as the basis for creating a new vue component that can be d
     .editor-preview {
         background-color: #ffffff;
     }
+
 </style>
 
 <div class="markdown-editor">
     <!-- Nav tabs -->
-    <ul class="nav nav-tabs" id="editorTabs" role="tablist">
+    <ul class="nav nav-tabs">
         <li class="nav-item">
             <a class="nav-link active"
                id="write-tab"
-               data-toggle="tab"
+               data-bs-toggle="tab"
                href="#write"
                role="tab"
                aria-controls="write"
@@ -115,15 +110,15 @@ I will use this repo as the basis for creating a new vue component that can be d
         <li class="nav-item">
             <a class="nav-link"
                id="preview-tab"
-               data-toggle="tab"
+               data-bs-toggle="tab"
                href="#preview"
                role="tab"
                aria-controls="preview"
                aria-selected="false">Preview</a>
         </li>
-        <li class="nav-item ml-auto">
+        <li class="nav-item flex-grow-1">
             
-            <div class="icon-buttons">
+            <div class="icon-buttons float-end">
                 <!-- Icon-only buttons -->
                 <button class="btn btn-light btn-sm" data-command="bold">
                     <i class="fa-solid fa-bold"></i>
@@ -137,6 +132,10 @@ I will use this repo as the basis for creating a new vue component that can be d
                 <div class="separator"></div>
                 <button class="btn btn-light btn-sm" data-command="link">
                     <i class="fa-solid fa-link"></i>
+                </button>
+                <div class="separator"></div>
+                <button class="btn btn-light btn-sm" data-command="link">
+                    <i class="fa-regular fa-circle-user"></i>
                 </button>
                 <!-- Add more buttons as needed -->
             </div>
@@ -161,18 +160,14 @@ I will use this repo as the basis for creating a new vue component that can be d
     </div>
 </div>
 
-<!-- Include jQuery and Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
+<script type="text/javascript">
     (function() {
         const textarea = document.querySelector('.editor-textarea');
         const preview = document.querySelector('.editor-preview');
         const editorButtons = document.querySelectorAll('[data-command]');
 
         // Handle tab change event
-        $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+        $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function(e) {
             if (e.target.id === 'preview-tab') {
 
                 // Hide the icon buttons when using preview mode
@@ -228,4 +223,5 @@ I will use this repo as the basis for creating a new vue component that can be d
             });
         });
     })();
+
 </script>
