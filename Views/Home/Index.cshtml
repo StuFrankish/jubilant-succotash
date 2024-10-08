@@ -41,8 +41,7 @@
         }
 
             .icon-buttons button,
-            .icon-buttons button:focus
-            {
+            .icon-buttons button:focus {
                 outline: none;
                 box-shadow: none;
             }
@@ -66,7 +65,7 @@
         display: flex;
         flex-direction: column;
         min-height: 150px;
-        height: 150px;
+        /* Removed fixed height */
     }
 
     .editor-content {
@@ -75,6 +74,18 @@
         flex-direction: column;
         margin: 0;
         padding: 0;
+        overflow: hidden; /* Added to prevent overflow */
+    }
+
+    .tab-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden; /* Ensure tab content fills available space */
+    }
+
+    .tab-content > .active {
+        display: contents !important;
     }
 
     .tab-pane {
@@ -83,11 +94,12 @@
         flex-direction: column;
         margin: 0;
         padding: 0;
+        overflow: hidden; /* Prevent scrollbars on the tab pane */
     }
 
     .editor-textarea,
     .editor-preview {
-        height: 100%;
+        flex: 1;
         width: 100%;
         margin: 0;
         padding: 8px;
@@ -114,14 +126,14 @@
         font-size: 0.8rem;
     }
 
-    .custom-modal-menu .fa-fw {
-        position: relative;
-        left: -5px;
-    }
+        .custom-modal-menu .fa-fw {
+            position: relative;
+            left: -5px;
+        }
 
-    .custom-modal-menu > div.list-group {
-        box-shadow: 0 0 3px grey;
-    }
+        .custom-modal-menu > div.list-group {
+            box-shadow: 0 0 3px grey;
+        }
 
 </style>
 
@@ -174,7 +186,7 @@
                 <button class="btn btn-light btn-sm" data-command="link" title="Link">
                     <i class="fa-solid fa-link"></i>
                 </button>
-                <button class="btn btn-light btn-sm" data-command="link" title="Mention">
+                <button class="btn btn-light btn-sm" data-command="mention" title="Mention">
                     <i class="fa-regular fa-circle-user"></i>
                 </button>
                 <div class="separator"></div>
@@ -188,30 +200,32 @@
     </ul>
 
     <!-- Tab panes -->
-    <div class="tab-content editor-content">
-        <div class="tab-pane show active"
-             id="write"
-             role="tabpanel"
-             aria-labelledby="write-tab">
-            <textarea class="editor-textarea" placeholder="Use Markdown to format your comment"></textarea>
-        </div>
-        <div class="tab-pane"
-             id="preview"
-             role="tabpanel"
-             aria-labelledby="preview-tab">
-            <div class="editor-preview"></div>
+    <div class="editor-content">
+        <div class="tab-content">
+            <div class="tab-pane show active"
+                 id="write"
+                 role="tabpanel"
+                 aria-labelledby="write-tab">
+                <textarea class="editor-textarea" placeholder="Use Markdown to format your comment"></textarea>
+            </div>
+            <div class="tab-pane"
+                 id="preview"
+                 role="tabpanel"
+                 aria-labelledby="preview-tab">
+                <div class="editor-preview"></div>
+            </div>
         </div>
     </div>
 </div>
 
 <script type="text/javascript">
-    $(function () {
+    $(function() {
         const textarea = document.querySelector('.editor-textarea');
         const preview = document.querySelector('.editor-preview');
         const editorButtons = document.querySelectorAll('[data-command]');
 
         // Handle tab change event
-        $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
+        $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function(e) {
             if (e.target.id === 'preview-tab') {
 
                 // Hide the icon buttons when using preview mode
@@ -268,7 +282,7 @@
         });
     });
 
-    document.getElementById('modalButton').addEventListener('click', function (e) {
+    document.getElementById('modalButton').addEventListener('click', function(e) {
         const modal = document.getElementById('menuModal');
         const buttonRect = document.getElementById('modalButton').getBoundingClientRect();
 
@@ -282,7 +296,7 @@
     });
 
     // Close modal if user clicks outside of it
-    document.addEventListener('click', function (e) {
+    document.addEventListener('click', function(e) {
         const modal = document.getElementById('menuModal');
         const button = document.getElementById('modalButton');
 
