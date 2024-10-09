@@ -36,12 +36,12 @@
         top: 3px;
     }
 
-        .icon-buttons button {
+        .icon-buttons a {
             color: #757575;
         }
 
-            .icon-buttons button,
-            .icon-buttons button:focus {
+            .icon-buttons a,
+            .icon-buttons a:focus {
                 outline: none;
                 box-shadow: none;
             }
@@ -64,7 +64,7 @@
         overflow: hidden;
         display: flex;
         flex-direction: column;
-        min-height: 150px;
+        min-height: 200px;
     }
 
     .editor-content {
@@ -130,10 +130,6 @@
             left: -5px;
         }
 
-        .custom-modal-menu > div.list-group {
-            box-shadow: 0 0 3px grey;
-        }
-
 </style>
 
 <div id="menuModal" class="modal custom-modal-menu">
@@ -172,26 +168,26 @@
             <div class="icon-buttons float-end">
 
                 <!-- Icon-only buttons -->
-                <button class="btn btn-light btn-sm" data-command="heading" title="Heading">
+                <a class="btn btn-light btn-sm" data-command="heading" title="Heading">
                     <i class="fa-solid fa-heading"></i>
-                </button>
-                <button class="btn btn-light btn-sm" data-command="bold" title="Bold">
+                </a>
+                <a class="btn btn-light btn-sm" data-command="bold" title="Bold">
                     <i class="fa-solid fa-bold"></i>
-                </button>
-                <button class="btn btn-light btn-sm" data-command="italic" title="Italic">
+                </a>
+                <a class="btn btn-light btn-sm" data-command="italic" title="Italic">
                     <i class="fa-solid fa-italic"></i>
-                </button>
+                </a>
                 <div class="separator"></div>
-                <button class="btn btn-light btn-sm" data-command="link" title="Link">
+                <a class="btn btn-light btn-sm" data-command="link" title="Link">
                     <i class="fa-solid fa-link"></i>
-                </button>
-                <button class="btn btn-light btn-sm" data-command="mention" title="Mention">
+                </a>
+                <a class="btn btn-light btn-sm" data-command="mention" title="Mention">
                     <i class="fa-regular fa-circle-user"></i>
-                </button>
+                </a>
                 <div class="separator"></div>
-                <button class="btn btn-light btn-sm" id="modalButton" title="Tools">
+                <a class="btn btn-light btn-sm" id="modalButton" title="Tools">
                     <i class="fa-solid fa-screwdriver-wrench"></i>
-                </button>
+                </a>
                 <!-- Add more buttons as needed -->
             </div>
 

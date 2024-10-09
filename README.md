@@ -34,5 +34,3 @@ dotnet run
 
 ### The Basic Editor
 ![image](https://github.com/user-attachments/assets/1c58b65d-f74b-4b27-a2b6-978159181f82)
-
-
