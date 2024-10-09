@@ -97,6 +97,7 @@ li.nav-item.ml-auto {
 
 .editor-textarea,
 .editor-preview {
+    background-color: $background-white;
     flex: 1;
     width: 100%;
     margin: 0;
@@ -110,7 +111,7 @@ li.nav-item.ml-auto {
 }
 
 .editor-preview {
-    background-color: $background-white;
+    padding: 20px;
 }
 
 /* Custom Modal As Menu */
