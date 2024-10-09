@@ -1,4 +1,6 @@
-﻿using Markdig;
+﻿using ColorCode.Styling;
+using Markdig;
+using Markdown.ColorCode;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GitHubMarkdownEditor.Controllers;
@@ -18,6 +20,7 @@ public class MarkdownPreviewHandler : Controller
         // Configure the pipeline with all advanced extensions active
         var pipeline = new MarkdownPipelineBuilder()
             .UseAdvancedExtensions()
+            .UseColorCode(styleDictionary: StyleDictionary.DefaultLight)
             .Build();
 
         var markdownText = Markdig.Markdown.ToHtml(markdown, pipeline);
