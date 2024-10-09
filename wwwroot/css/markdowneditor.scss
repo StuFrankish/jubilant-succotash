@@ -118,6 +118,10 @@ li.nav-item.ml-auto {
     }
 }
 
+.editor-textarea {
+    padding: 20px;
+}
+
 .editor-preview {
     padding: 20px;
     width: unset;
@@ -330,7 +334,6 @@ li.nav-item.ml-auto {
             cursor: pointer;
         }
     }
-
     /* Miscellaneous */
     .markdown-body {
         box-sizing: border-box;
