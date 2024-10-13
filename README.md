@@ -9,6 +9,9 @@ So here I am, "up late, again" as is the norm, writing one from scratch that loo
 
 Don't mind the repo name... "jubilant-succotash" was Githubs idea and I don't have any better ones!
 
+### Vue Component
+I've also created a Vue component version, you can find it here: https://github.com/StuFrankish/vue-github-markdown-editor
+
 ### Technical Bits
 - Built on a dotnet8 backend with MVC (quick and dirty project setup).
 - Uses embedded Font Awesome (free) icons.
