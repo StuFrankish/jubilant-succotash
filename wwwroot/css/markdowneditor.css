@@ -304,13 +304,6 @@ li.nav-item.ml-auto {
     padding: 15px;
   }
 }
-.editor-preview .markdown-alert svg {
-  display: inline-block;
-  overflow: visible !important;
-  vertical-align: text-bottom;
-  fill: currentColor;
-  margin-right: 10px;
-}
 .editor-preview .markdown-alert {
   padding: 8px 16px;
   margin-bottom: 16px;
@@ -320,7 +313,7 @@ li.nav-item.ml-auto {
 .editor-preview .markdown-alert p {
   margin-bottom: 0px;
 }
-.editor-preview .markdown-alert .markdown-alert-title {
+.editor-preview .markdown-alert-title {
   display: flex;
   font-weight: 500;
   align-items: center;
@@ -330,30 +323,37 @@ li.nav-item.ml-auto {
 .editor-preview .markdown-alert.markdown-alert-note {
   border-left-color: #0969da;
 }
-.editor-preview .markdown-alert.markdown-alert-note .markdown-alert-title {
+.editor-preview .markdown-alert.markdown-alert-note-title {
   color: #0969da;
 }
 .editor-preview .markdown-alert.markdown-alert-tip {
   border-left-color: #1a7f37;
 }
-.editor-preview .markdown-alert.markdown-alert-tip .markdown-alert-title {
+.editor-preview .markdown-alert.markdown-alert-tip-title {
   color: #1a7f37;
 }
 .editor-preview .markdown-alert.markdown-alert-important {
   border-left-color: #8250df;
 }
-.editor-preview .markdown-alert.markdown-alert-important .markdown-alert-title {
+.editor-preview .markdown-alert.markdown-alert-important-title {
   color: #8250df;
 }
 .editor-preview .markdown-alert.markdown-alert-warning {
   border-left-color: #9a6700;
 }
-.editor-preview .markdown-alert.markdown-alert-warning .markdown-alert-title {
+.editor-preview .markdown-alert.markdown-alert-warning-title {
   color: #9a6700;
 }
 .editor-preview .markdown-alert.markdown-alert-caution {
   border-left-color: #d1242f;
 }
-.editor-preview .markdown-alert.markdown-alert-caution .markdown-alert-title {
+.editor-preview .markdown-alert.markdown-alert-caution-title {
   color: #d1242f;
+}
+.editor-preview .markdown-alert svg {
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+  margin-right: 10px;
 }
